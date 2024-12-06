@@ -29,10 +29,10 @@ const Hero = () => {
     }
 
     useEffect(() => {
-       if(loadedVideos === totalVideos-2) {
-        setisLoading(false);
-       }
-    },[loadedVideos])
+        if (loadedVideos === totalVideos - 2) {
+            setisLoading(false);
+        }
+    }, [loadedVideos])
 
     useGSAP(() => {
         if (hasClicked) {
@@ -56,9 +56,10 @@ const Hero = () => {
     }, { dependencies: [currentIndex], revertOnUpdate: true })
 
     useGSAP(() => {
-        gsap.set("#video-frame",{
+        gsap.set("#video-frame", {
             clipPath: 'polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)',
-            borderRadius: '0 0 40% 10%'})
+            borderRadius: '0 0 40% 10%'
+        })
 
         gsap.from("#video-frame", {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
@@ -71,7 +72,7 @@ const Hero = () => {
                 scrub: true
             }
         })
-})
+    })
 
     const getVideoResource = (index) => `videos/Japan-${index}.mp4`
 
@@ -93,7 +94,7 @@ const Hero = () => {
                             <video ref={nextVideoRef}
                                 src={getVideoResource(upcomingVideoindex)}
                                 loop
-                                muted
+                                // muted
                                 id="current-video"
                                 className='size-64 origin-center scale-150 object-cover object-center'
                                 onLoadedData={handleVideoLoad}
@@ -104,16 +105,16 @@ const Hero = () => {
                         ref={nextVideoRef}
                         src={getVideoResource(currentIndex)}
                         loop
-                        muted
+                        // muted
                         id="next-viedo"
                         className='absolute-center absolute invisible z-20 size-64 object-cover object-center'
                         onLoadedData={handleVideoLoad}
                     />
                     <video
-                        src={getVideoResource(currentIndex-1===0?totalVideos:currentIndex-1)}
+                        src={getVideoResource(currentIndex - 1 === 0 ? totalVideos : currentIndex - 1)}
                         autoPlay
                         loop
-                        muted
+                        // muted
                         className='absolute left-0 top-0 size-full object-cover object-center'
                     />
                 </div>

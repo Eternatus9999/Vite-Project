@@ -77,7 +77,7 @@ const Hero = () => {
     const getVideoResource = (index) => `videos/Japan-${index}.mp4`
 
     return (
-        <div className='relative h-dvh w-screen overflow-x-hidden'>
+        <div className='relative h-dvh w-screen overflow-x-hidden' id='home'>
             {isLoading && (
                 <div className='flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50'>
                     <div className='three-body'>

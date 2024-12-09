@@ -41,6 +41,9 @@ const About = () => {
                 <p>
                 Japan, an island nation in East Asia, is renowned for its rich culture, historical heritage, and breathtaking natural landscapes
                 </p>
+                <p>
+                Japan, an island nation in East Asia, is renowned for its rich culture, historical heritage, and breathtaking natural landscapes
+                </p>
             </div>
         </div>
         <div className='h-dvh w-screen' id='clip'>

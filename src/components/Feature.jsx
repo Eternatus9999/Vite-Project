@@ -1,6 +1,24 @@
 import React from 'react'
 import { TiLocationArrow } from 'react-icons/ti'
 
+const BentoTilt = ({ children, className = '', href = ''})=>{
+
+    const [transformStyle, setTransformStyle] = useState('');
+    const itemRef = useRef();
+
+    const handleMouseMove = (e) => {}
+
+    const handleMouseLeave = () =>{
+        setTransformStyle('');
+    }
+
+    return (
+        <a className={className} href={href} ref={itemRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{transform: transformStyle}}>
+            {children}
+        </a>
+    )
+}
+
 const BentoCard = ({ src, title, description, classname }) => {
     return (
         <div className='relative size-full'>
@@ -34,44 +52,44 @@ const Feature = () => {
                         The people embrace both traditional sports like sumo and modern outdoor activities, making Japan a unique blend of the old and the new.
                     </pre>
                 </div>
-                <a className='border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]' href='https://en.wikipedia.org/wiki/Culture_of_Japan'>
+                <BentoTilt className='border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]' href='https://en.wikipedia.org/wiki/Culture_of_Japan'>
                     <BentoCard
                         src='videos/feature-1.mp4'
                         title={<>C<b>u</b>lt<b>u</b>re</>}
                         description="The tea ceremony (Sado), Ikebana, and Calligraphy (Shodo) exemplify Japan's traditional arts. Festivals like Hanami, Obon, and Tanabata highlight its cultural celebrations, emphasizing mindfulness, aesthetics, and community spirit."
                     />
-                </a>
+                </BentoTilt>
                 <a className='grid h-[135vh] grid-cols-2 grid-rows-3 gap-7' id='more info' href='https://www.youtube.com/watch?v=nYPLF3Hi7v8'>
-                    <div className='bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2'>
+                    <BentoTilt className='bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2'>
                         <BentoCard
                             src='videos/feature-2.mp4'
                             title={<>S<b>u</b>nSet</>}
                         />
-                    </div>
-                    <a className='bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0' href='https://en.wikipedia.org/wiki/Flag_of_Japan'>
+                    </BentoTilt>
+                    <BentoTilt className='bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0' href='https://en.wikipedia.org/wiki/Flag_of_Japan'>
                         <BentoCard
                             src='videos/feature-3.mp4'
                             title={<>Fl<b>a</b>g</>}
                             classname={'!text-black'}
                         />
-                    </a>
-                    <a className='bento-tilt_1 me-14 md:col-span-1 md:me-0' href='https://en.wikipedia.org/wiki/Japanese_cuisine'>
+                    </BentoTilt>
+                    <BentoTilt className='bento-tilt_1 me-14 md:col-span-1 md:me-0' href='https://en.wikipedia.org/wiki/Japanese_cuisine'>
                         <BentoCard
                             src='videos/feature-5.mp4'
                             title={<>C<b>u</b>isi<b>n</b>e</>}
                             description={'Japanese food is renowned for its fresh ingredients and delicate flavors, exemplified by sushi, ramen, and tempura. This cuisine is celebrated worldwide, blending traditional dishes with modern variations. Esteemed chefs and restaurants globally contribute to its international acclaim.'}
                             classname={'!text-black !text-bold'}
                         />
-                    </a>
-                    <a className='bento-tilt_2' href='https://en.wikipedia.org/wiki/Japan'>
+                    </BentoTilt>
+                    <BentoTilt className='bento-tilt_2' href='https://en.wikipedia.org/wiki/Japan'>
                         <div className='flex size-full flex-col justify-between bg-violet-300 p-5'>
                             <h1 className='bento-title special-font max-w-64 text-black'>
                                 M<b>o</b>re Inf<b>o</b> Click Here
                             </h1>
                             <TiLocationArrow className='m-5 scale-[5] self-end' />
                         </div>
-                    </a>
-                    <a className='bento-tilt_2' href='https://en.wikipedia.org/wiki/Anime'>
+                    </BentoTilt>
+                    <BentoTilt className='bento-tilt_2' href='https://en.wikipedia.org/wiki/Anime'>
                         <video
                             src='videos/feature-4.mp4'
                             autoPlay
@@ -79,7 +97,7 @@ const Feature = () => {
                             loop
                             className='size-full object-cover object-center'
                         />
-                    </a>
+                    </BentoTilt>
                 </a>
             </div>
         </section>

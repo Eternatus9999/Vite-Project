@@ -1,23 +1,7 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { TiLocationArrow } from 'react-icons/ti'
 
-const BentoTilt = ({ children, className = '', href = ''})=>{
-
-    const [transformStyle, setTransformStyle] = useState('');
-    const itemRef = useRef();
-
-    const handleMouseMove = (e) => {}
-
-    const handleMouseLeave = () =>{
-        setTransformStyle('');
-    }
-
-    return (
-        <a className={className} href={href} ref={itemRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{transform: transformStyle}}>
-            {children}
-        </a>
-    )
-}
+import BentoTilt from './BentoTilt'
 
 const BentoCard = ({ src, title, description, classname }) => {
     return (
@@ -59,8 +43,8 @@ const Feature = () => {
                         description="The tea ceremony (Sado), Ikebana, and Calligraphy (Shodo) exemplify Japan's traditional arts. Festivals like Hanami, Obon, and Tanabata highlight its cultural celebrations, emphasizing mindfulness, aesthetics, and community spirit."
                     />
                 </BentoTilt>
-                <a className='grid h-[135vh] grid-cols-2 grid-rows-3 gap-7' id='more info' href='https://www.youtube.com/watch?v=nYPLF3Hi7v8'>
-                    <BentoTilt className='bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2'>
+                <div className='grid h-[135vh] grid-cols-2 grid-rows-3 gap-7' id='more info'>
+                    <BentoTilt className='bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2' href='https://www.youtube.com/watch?v=nYPLF3Hi7v8'>
                         <BentoCard
                             src='videos/feature-2.mp4'
                             title={<>S<b>u</b>nSet</>}
@@ -98,7 +82,7 @@ const Feature = () => {
                             className='size-full object-cover object-center'
                         />
                     </BentoTilt>
-                </a>
+                </div>
             </div>
         </section>
     )

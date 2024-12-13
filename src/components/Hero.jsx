@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BentoTilt from './BentoTilt';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,15 +102,15 @@ const Hero = () => {
                             />
                         </div>
                     </div>
-                    <video
-                        ref={nextVideoRef}
-                        src={getVideoResource(currentIndex)}
-                        loop
-                        muted
-                        id="next-viedo"
-                        className='absolute-center absolute invisible z-20 size-64 object-cover object-center'
-                        onLoadedData={handleVideoLoad}
-                    />
+                        <video
+                            ref={nextVideoRef}
+                            src={getVideoResource(currentIndex)}
+                            loop
+                            muted
+                            id="next-viedo"
+                            className='absolute-center absolute invisible z-20 size-64 object-cover object-center'
+                            onLoadedData={handleVideoLoad}
+                        />
                     <video
                         src={getVideoResource(currentIndex - 1 === 0 ? totalVideos : currentIndex - 1)}
                         autoPlay

@@ -1,39 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BentoTilt from './BentoTilt';
+
+import { VideoPreview } from './VideoPreview';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(1);
     const [hasClicked, setHasClicked] = useState(false);
-    const [isLoading, setisLoading] = useState(true);
-    const [loadedVideos, setloadedVideos] = useState(0);
+
+    const [isLoading, setLoading] = useState(true);
+    const [loadedVideos, setLoadedVideos] = useState(0);
 
     const totalVideos = 4;
     const nextVideoRef = useRef(null);
 
     const handleVideoLoad = () => {
-        setloadedVideos((prev) => prev + 1);
+        setLoadedVideos((prev) => prev + 1);
     }
+
+    useEffect(() => {
+        if (loadedVideos === totalVideos - 2) {
+            setLoading(false);
+        }
+    }, [loadedVideos])
 
     const upcomingVideoindex = (currentIndex % totalVideos) + 1;
     const handleMiniVdClick = () => {
         setHasClicked(true);
 
-        setCurrentIndex(upcomingVideoindex);
+        setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
     }
-
-    useEffect(() => {
-        if (loadedVideos === totalVideos - 2) {
-            setisLoading(false);
-        }
-    }, [loadedVideos])
 
     useGSAP(() => {
         if (hasClicked) {
@@ -92,27 +95,29 @@ const Hero = () => {
                 <div>
                     <div className='mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg'>
                         <div onClick={handleMiniVdClick} className='origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100'>
-                            <video ref={nextVideoRef}
-                                src={getVideoResource(upcomingVideoindex)}
-                                loop
-                                muted
-                                id="current-video"
-                                className='size-64 origin-center scale-150 object-cover object-center'
-                                onLoadedData={handleVideoLoad}
-                            />
+                                <video ref={nextVideoRef}
+                                    src={getVideoResource(upcomingVideoindex)}
+                                    loop
+                                    muted
+                                    id="current-video"
+                                    className='size-64 origin-center scale-150 object-cover object-center'
+                                    onLoadedData={handleVideoLoad}
+                                />
                         </div>
                     </div>
-                        <video
-                            ref={nextVideoRef}
-                            src={getVideoResource(currentIndex)}
-                            loop
-                            muted
-                            id="next-viedo"
-                            className='absolute-center absolute invisible z-20 size-64 object-cover object-center'
-                            onLoadedData={handleVideoLoad}
-                        />
+
                     <video
-                        src={getVideoResource(currentIndex - 1 === 0 ? totalVideos : currentIndex - 1)}
+                        ref={nextVideoRef}
+                        src={getVideoResource(currentIndex)}
+                        autoPlay
+                        loop
+                        muted
+                        id="next-viedo"
+                        className='absolute-center absolute invisible z-20 size-64 object-cover object-center'
+                        onLoadedData={handleVideoLoad}
+                    />
+                    <video
+                        src={getVideoResource(currentIndex)}
                         autoPlay
                         loop
                         muted
@@ -130,8 +135,8 @@ const Hero = () => {
                         <p className='mb-5 max-w-64 font-robert-regular text-blue-100'>
                             The beauty of Japan
                         </p>
-                        <Button id='watch-trailer' title="Watch Trailer" leftIcon={<TiLocationArrow />}
-                            containerClass="!bg-yellow-300 flex-center gap-1"
+                        <Button id='watch-trailer' title="Story of Japan" leftIcon={<TiLocationArrow />}
+                            containerClass="!bg-blue-300 flex-center gap-1"
                         />
                     </div>
                 </div>

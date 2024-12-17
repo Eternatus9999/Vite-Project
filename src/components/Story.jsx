@@ -74,9 +74,9 @@ const Story = () => {
                     <RoundedCorners />
                 </div>
             </div>
-            <div className='-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end'>
-                <div className='flex h-full w-fit flex-col items-center md:items-start'>
-                    <p className='mt-2 max-w-sm text-center font-circular-web text-violet-50 md:text-start'>
+            <div className='-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end '>
+                <div className='flex h-full w-fit flex-col items-center md:items-start '>
+                    <p className='mt-2 max-w-sm text-center font-circular-web text-violet-50 md:text-start md:text-lg'>
                     In Tokyo, a young girl named Hana found wisdom in a temple garden from Master Takashi, who taught her about Japan's rich culture and traditions.
                     Inspired, she grew up to share these values worldwide. 
                     The legacy of Japan's heritage continued to blossom through her journey.
